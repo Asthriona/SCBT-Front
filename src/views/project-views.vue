@@ -25,8 +25,8 @@
                     <v-btn>Report a new bug</v-btn>
                 </router-link>
             </v-col>
-            <v-col cols="8" v-for="bug in bugs" :key="bug.bugId">
-                <bugComp :bug="bug" />
+            <v-col cols="8" v-for="bug in bugs" :key="bug.bugId" >
+                <bugComp :bug="bug" v-if="bug.status !== 'close'"/>
             </v-col>
         </v-row>
     </v-container>
@@ -40,7 +40,7 @@ import { useUserStore } from '@/store/user';
 export default {
     name: "project-view",
     data() {
-        return { 
+        return {
             project: {},
             bugs: [],
             user: [],
@@ -53,7 +53,7 @@ export default {
         getUser() {
             const userStore = useUserStore();
             this.user = userStore;
-        },  
+        },
         getProjectInfo() {
             axios.get(`${import.meta.env.VITE_APP_API}/project/project/${this.$route.params.projectId}`, {
                 withCredentials: true

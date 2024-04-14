@@ -2,6 +2,7 @@
   <v-app>
     <TheNavBar />
     <default-view />
+    <TheFooter />
   </v-app>
 </template>
 
@@ -12,6 +13,7 @@
 <script>
 import DefaultView from './View.vue'
 import TheNavBar from '@/components/pageComp/TheNavBar.vue';
+import TheFooter from '@/components/pageComp/TheFooter.vue';
 export default {
   name: "default-layout",
   components: {
